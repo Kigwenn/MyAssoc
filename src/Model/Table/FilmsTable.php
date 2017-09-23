@@ -1,0 +1,72 @@
+<?php
+namespace App\Model\Table;
+
+use Cake\ORM\Query;
+use Cake\ORM\RulesChecker;
+use Cake\ORM\Table;
+use Cake\Validation\Validator;
+
+/**
+ * Films Model
+ *
+ * @property \App\Model\Table\ActorsTable|\Cake\ORM\Association\BelongsToMany $Actors
+ *
+ * @method \App\Model\Entity\Film get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Film newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Film[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Film|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Film patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Film[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Film findOrCreate($search, callable $callback = null, $options = [])
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
+ */
+class FilmsTable extends Table
+{
+
+    /**
+     * Initialize method
+     *
+     * @param array $config The configuration for the Table.
+     * @return void
+     */
+    public function initialize(array $config)
+    {
+        parent::initialize($config);
+
+        $this->setTable('films');
+        $this->setDisplayField('name');
+        $this->setPrimaryKey('id');
+
+        $this->addBehavior('Timestamp');
+
+        $this->belongsToMany('Actors', [
+            'foreignKey' => 'film_id',
+            'targetForeignKey' => 'actor_id',
+            'joinTable' => 'films_actors'
+        ]);
+    }
+
+    /**
+     * Default validation rules.
+     *
+     * @param \Cake\Validation\Validator $validator Validator instance.
+     * @return \Cake\Validation\Validator
+     */
+    public function validationDefault(Validator $validator)
+    {
+        $validator
+            ->integer('id')
+            ->allowEmpty('id', 'create');
+
+        $validator
+            ->scalar('name')
+            ->allowEmpty('name');
+
+        $validator
+            ->scalar('content')
+            ->allowEmpty('content');
+
+        return $validator;
+    }
+}
