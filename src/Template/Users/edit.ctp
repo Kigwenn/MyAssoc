@@ -1,11 +1,11 @@
 <section class="content-header">
   <h1>
-    User
-    <small><?= __('Edit') ?></small>
+    Utilisateur
+    <small><?= __('Modification') ?></small>
   </h1>
   <ol class="breadcrumb">
     <li>
-    <?= $this->Html->link('<i class="fa fa-dashboard"></i> '.__('Back'), ['action' => 'index'], ['escape' => false]) ?>
+    <?= $this->Html->link('<i class="fa fa-dashboard"></i> '.__('Retour'), ['action' => 'index'], ['escape' => false]) ?>
     </li>
   </ol>
 </section>
@@ -18,7 +18,7 @@
       <!-- general form elements -->
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title"><?= __('Form') ?></h3>
+          <h3 class="box-title"><?= __('Formulaire') ?></h3>
         </div>
         <!-- /.box-header -->
         <!-- form start -->
@@ -26,12 +26,12 @@
           <div class="box-body">
           <?php
             echo $this->Form->input('login');
-            echo $this->Form->input('password');
+            echo $this->Form->input('Mot de passe');
           ?>
           </div>
           <!-- /.box-body -->
           <div class="box-footer">
-            <?= $this->Form->button(__('Save')) ?>
+            <?= $this->Form->button(__('Enregistrer')) ?>
           </div>
         <?= $this->Form->end() ?>
       </div>

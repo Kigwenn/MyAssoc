@@ -1,10 +1,10 @@
 <section class="content-header">
   <h1>
-    <?php echo __('User'); ?>
+    <?php echo __('Utilisateur'); ?>
   </h1>
   <ol class="breadcrumb">
     <li>
-    <?= $this->Html->link('<i class="fa fa-dashboard"></i> ' . __('Back'), ['action' => 'index'], ['escape' => false])?>
+    <?= $this->Html->link('<i class="fa fa-dashboard"></i> ' . __('Retour'), ['action' => 'index'], ['escape' => false])?>
     </li>
   </ol>
 </section>
@@ -21,16 +21,9 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <dl class="dl-horizontal">
-                                                                                                                <dt><?= __('Login') ?></dt>
-                                        <dd>
-                                            <?= h($user->login) ?>
-                                        </dd>
-                                                                                                                                                                                                                    
-                                            
-                                                                                                                                            
-                                                                                                                                                                                                
-                                            
-                                    </dl>
+                    <dt><?= __('Login') ?></dt>
+                    <dd><?= h($user->login) ?></dd>
+                </dl>
             </div>
             <!-- /.box-body -->
         </div>
