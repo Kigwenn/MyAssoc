@@ -1,32 +1,43 @@
 <?php
 /**
  * @var \App\View\AppView $this
+ * @var \App\Model\Entity\Film[]|\Cake\Collection\CollectionInterface $films
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $film->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $film->id)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Films'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Actors'), ['controller' => 'Actors', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Actor'), ['controller' => 'Actors', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="films form large-9 medium-8 columns content">
-    <?= $this->Form->create($film) ?>
-    <fieldset>
-        <legend><?= __('Edit Film') ?></legend>
-        <?php
-            echo $this->Form->control('name');
-            echo $this->Form->control('content');
-            echo $this->Form->control('actors._ids', ['options' => $actors]);
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+
+<section class="content-header">
+    <h1>
+        <?php echo __('Film'); ?>
+    </h1>
+    <ol class="breadcrumb">
+        <li>
+            <?= $this->Html->link('<i class="fa fa-dashboard"></i> ' . __('Retour'), ['action' => 'index'], ['escape' => false])?>
+        </li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12 ">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <i class="fa fa-info"></i>
+                    <h3 class="box-title"><?= __('Film Modification') ?></h3>
+
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <?= $this->Form->create($film) ?>
+                    <?php
+                        echo $this->Form->input('name',['label' =>'Titre du film']);
+                        echo $this->Form->input('content',['label' =>'Déscription']);
+                        echo $this->Form->input('actors._ids', ['label' =>'Sélection de l\'acteur','options' => $actors]);
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?= $this->Form->button(__('Enregistrer')) ?>
     <?= $this->Form->end() ?>
-</div>
+</section>
