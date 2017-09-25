@@ -23,6 +23,7 @@
         <!-- /.box-header -->
         <!-- form start -->
         <?= $this->Form->create($user, array('role' => 'form')) ?>
+          <?= $this->Form->input('id') ?>
           <div class="box-body">
           <?php
             echo $this->Form->input('login');
