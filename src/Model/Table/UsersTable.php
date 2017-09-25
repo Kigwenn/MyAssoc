@@ -35,7 +35,6 @@ class UsersTable extends Table
         $this->setTable('users');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
-
         $this->addBehavior('Timestamp');
     }
 
@@ -54,12 +53,19 @@ class UsersTable extends Table
         $validator
             ->scalar('login')
             ->requirePresence('login', 'create')
-            ->notEmpty('login');
+            ->notEmpty('login', "Un nom d'utilisateur est nécessaire");
 
         $validator
             ->scalar('password')
             ->requirePresence('password', 'create')
-            ->notEmpty('password');
+            ->notEmpty('password', 'Un mot de passe est nécessaire');
+
+        $validator
+            ->scalar('role')
+            ->requirePresence('role', 'create')
+            ->notEmpty('role', 'Un role est nécessaire')
+            ->add('role', 'inList', ['rule' => ['inList', ['admin', 'author']],
+                'message' => 'Merci de rentrer un role valide']);
 
         return $validator;
     }
