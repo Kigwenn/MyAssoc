@@ -32,6 +32,7 @@
                 <th><?= $this->Paginator->sort('id') ?></th>
                 <th><?= $this->Paginator->sort('login') ?></th>
                 <th><?= $this->Paginator->sort('mot de passe') ?></th>
+                <th><?= $this->Paginator->sort('rôle') ?></th>
                 <th><?= __('Actions') ?></th>
               </tr>
             </thead>
@@ -41,6 +42,7 @@
                 <td><?= $this->Number->format($user->id) ?></td>
                 <td><?= h($user->login) ?></td>
                 <td><?= h($user->password) ?></td>
+                  <td><?= h($user->role) ?></td>
                 <td class="actions" style="white-space:nowrap">
                   <?= $this->Html->link(__('Afficher'), ['action' => 'view', $user->id], ['class'=>'btn btn-info btn-xs']) ?>
                   <?= $this->Html->link(__('Modiffier'), ['action' => 'edit', $user->id], ['class'=>'btn btn-warning btn-xs']) ?>

@@ -27,11 +27,14 @@
           <?php
             echo $this->Form->input('login');
             echo $this->Form->input('password');
+            echo $this->Form->input('role', [
+                'options' => ['admin' => 'Admin', 'author' => 'Author']
+            ]);
           ?>
           </div>
           <!-- /.box-body -->
           <div class="box-footer">
-            <?= $this->Form->button(__('Save')) ?>
+            <?= $this->Form->button(__('Ajouter')) ?>
           </div>
         <?= $this->Form->end() ?>
       </div>

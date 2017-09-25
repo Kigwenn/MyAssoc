@@ -26,7 +26,10 @@
           <div class="box-body">
           <?php
             echo $this->Form->input('login');
-            echo $this->Form->input('Mot de passe');
+            echo $this->Form->input('password');
+            echo $this->Form->input('role', [
+                'options' => ['admin' => 'Admin', 'author' => 'Author']
+            ]);
           ?>
           </div>
           <!-- /.box-body -->

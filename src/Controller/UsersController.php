@@ -52,12 +52,12 @@ class UsersController extends AppController
     {
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->data);
+            $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The {0} has been saved.', 'User'));
+                $this->Flash->success(__('L\'utilisateur {0] a été sauvegardé.', 'User'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The {0} could not be saved. Please, try again.', 'User'));
+                $this->Flash->error(__('Impossible d\'ajouter l\'utilisateur {0}.', 'User'));
             }
         }
         $this->set(compact('user'));
@@ -68,7 +68,7 @@ class UsersController extends AppController
      * Edit method
      *
      * @param string|null $id User id.
-     * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
+     * @return \Cake\Http\Response
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function edit($id = null)
@@ -77,7 +77,7 @@ class UsersController extends AppController
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $user = $this->Users->patchEntity($user, $this->request->data);
+            $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The {0} has been saved.', 'User'));
                 return $this->redirect(['action' => 'index']);
