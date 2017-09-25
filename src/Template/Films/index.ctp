@@ -4,50 +4,87 @@
  * @var \App\Model\Entity\Film[]|\Cake\Collection\CollectionInterface $films
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Film'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Actors'), ['controller' => 'Actors', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Actor'), ['controller' => 'Actors', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="films index large-9 medium-8 columns content">
-    <h3><?= __('Films') ?></h3>
-    <table cellpadding="0" cellspacing="0">
-        <thead>
-            <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('name') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($films as $film): ?>
-            <tr>
-                <td><?= $this->Number->format($film->id) ?></td>
-                <td><?= h($film->name) ?></td>
-                <td><?= h($film->created) ?></td>
-                <td><?= h($film->modified) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $film->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $film->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $film->id], ['confirm' => __('Are you sure you want to delete # {0}?', $film->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
+
+<?= $this->Html->css(['jquery.dataTables.min']) ?>
+<?= $this->Html->script(['jquery.dataTables.min']) ?>
+
+<section class="content-header">
+    <h1>
+        <?php echo __('Film'); ?>
+    </h1>
+    <ol class="breadcrumb">
+        <li>
+            <?= $this->Html->link('<i class="fa fa-dashboard"></i> ' . __('Retour'), ['action' => 'index'], ['escape' => false])?>
+        </li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+    <div class="box box-solid films index columns content dataTables_wrapper">
+            <div class="dataTables_length" id="Films_length">
+                <label>Afficher
+                    <select name="Films_length" aria-controls="Films" class="">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                    </select>
+                    films
+                </label>
+            </div>
+
+            <div id="Films_filter" class="dataTables_filter">
+                <label>Rechercher:
+                    <input type="search" class="" placeholder="" aria-controls="Films">
+                </label>
+            </div>
+
+            <table id="" class="display dataTable" cellspacing="0" width="100%" role="grid" aria-describedby="Films_info" style="width: 100%;">
+                <thead>
+                    <tr role="row">
+                        <th class="sorting_asc" tabindex="0" aria-controls="Films" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Titre: activer pour trier la colonne en descendant" style="col-lg-6 col-md-5"><?= $this->Paginator->sort('name',['label' =>'Nom']) ?></th>
+                        <th class="sorting_asc" tabindex="0" aria-controls="Films" rowspan="1" colspan="1" aria-sort="ascending" aria-label="créer: activer pour trier la colonne en descendant" style="col-lg-2 col-md-2"><?= $this->Paginator->sort('created',['label' =>'Date Cré.']) ?></th>
+                        <th class="sorting_asc" tabindex="0" aria-controls="Films" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Modification: activer pour trier la colonne en descendant" style="col-md-5"><?= $this->Paginator->sort('modified',['label' =>'Date Mod.']) ?></th>
+                        <th style="col-md-2">Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <?php foreach ($films as $film): ?>
+                        <td><?= h($film->name) ?></td>
+                        <td><?= h($film->created) ?></td>
+                        <td><?= h($film->modified) ?></td>
+
+                        <td class="actions">
+                            <?= $this->Html->link(__('Afficher '), ['action' => 'view', $film->id], ['class'=>'btn btn-info btn-xs']) ?>
+                            <?= $this->Html->link(__('Editer '), ['action' => 'edit', $film->id], ['class'=>'btn btn-warning btn-xs']) ?>
+                            <?= $this->Form->postLink(__('Effacer '), ['action' => 'delete', $film->id], ['confirm' => __('êtes vous sur de vouloir supprimer # {0}?', $film->id), 'class'=>'btn btn-danger btn-xs']) ?>
+                        </td>
+                    </tr>
+
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+
+            <div class="box-footer clearfix">
+                <ul class="pagination pagination-sm no-margin pull-right">
+                    <?= $this->Paginator->first('<< ' . __('au debut')) ?>
+                    <?= $this->Paginator->prev('< ' . __('précédent')) ?>
+                    <?= $this->Paginator->numbers() ?>
+                    <?= $this->Paginator->next(__('suivant') . ' >') ?>
+                    <?= $this->Paginator->last(__('dernier') . ' >>') ?>
+                </ul>
+                <p><?= $this->Paginator->counter(['format' => __('Page {{page}} sur {{pages}}, {{current}} enregistrement(s) sur {{count}}')]) ?></p>
+            </div>
+
+
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('#Films').DataTable();
+    } );
+</script>
