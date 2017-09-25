@@ -23,7 +23,10 @@
                 <dl class="dl-horizontal">
                     <dt><?= __('Login') ?></dt>
                     <dd><?= h($user->login) ?></dd>
+                    <dt><?= __('rôle') ?></dt>
+                    <dd><?= h($user->role) ?></dd>
                 </dl>
+
             </div>
             <!-- /.box-body -->
         </div>
