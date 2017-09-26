@@ -11,8 +11,9 @@ use Cake\ORM\Entity;
  * @property string $content
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
+ * @property int $actors_id
  *
- * @property \App\Model\Entity\Actor[] $actors
+ * @property \App\Model\Entity\Actor $actor
  */
 class Film extends Entity
 {
@@ -31,6 +32,7 @@ class Film extends Entity
         'content' => true,
         'created' => true,
         'modified' => true,
-        'actors' => true
+        'actors_id' => true,
+        'actor' => true
     ];
 }

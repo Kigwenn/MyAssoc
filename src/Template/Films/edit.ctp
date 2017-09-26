@@ -1,7 +1,6 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Film[]|\Cake\Collection\CollectionInterface $films
  */
 ?>
 
@@ -30,9 +29,9 @@
                 <div class="box-body">
                     <?= $this->Form->create($film) ?>
                     <?php
-                        echo $this->Form->input('name',['label' =>'Titre du film']);
-                        echo $this->Form->input('content',['label' =>'Déscription']);
-                        echo $this->Form->input('actors._ids', ['label' =>'Sélection de l\'acteur','options' => $actors]);
+                    echo $this->Form->input('name',['label' =>'Titre du film']);
+                    echo $this->Form->input('content',['label' =>'Déscription']);
+                    echo $this->Form->input('actors_id', ['label' =>'Sélection de l\'acteur','options' => $actors, 'empty' => true]);
                     ?>
                 </div>
             </div>

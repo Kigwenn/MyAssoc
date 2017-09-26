@@ -1,7 +1,6 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Film[]|\Cake\Collection\CollectionInterface $films
  */
 ?>
 <section class="content-header">
@@ -31,7 +30,7 @@
                     <?php
                     echo $this->Form->input('name');
                     echo $this->Form->input('content');
-                    echo $this->Form->input('actors._ids', ['options' => $actors]);
+                    echo $this->Form->input('actors_id', ['options' => $actors, 'empty' => true]);
                     ?>
                 </div>
             </div>

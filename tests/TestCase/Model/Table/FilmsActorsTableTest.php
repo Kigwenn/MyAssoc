@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\FilmsTable;
+use App\Model\Table\FilmsActorsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\FilmsTable Test Case
+ * App\Model\Table\FilmsActorsTable Test Case
  */
-class FilmsTableTest extends TestCase
+class FilmsActorsTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\FilmsTable
+     * @var \App\Model\Table\FilmsActorsTable
      */
-    public $Films;
+    public $FilmsActors;
 
     /**
      * Fixtures
@@ -24,9 +24,9 @@ class FilmsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
+        'app.films_actors',
         'app.films',
-        'app.actors',
-        'app.films_actors'
+        'app.actors'
     ];
 
     /**
@@ -37,8 +37,8 @@ class FilmsTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Films') ? [] : ['className' => FilmsTable::class];
-        $this->Films = TableRegistry::get('Films', $config);
+        $config = TableRegistry::exists('FilmsActors') ? [] : ['className' => FilmsActorsTable::class];
+        $this->FilmsActors = TableRegistry::get('FilmsActors', $config);
     }
 
     /**
@@ -48,7 +48,7 @@ class FilmsTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Films);
+        unset($this->FilmsActors);
 
         parent::tearDown();
     }
@@ -59,16 +59,6 @@ class FilmsTableTest extends TestCase
      * @return void
      */
     public function testInitialize()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test validationDefault method
-     *
-     * @return void
-     */
-    public function testValidationDefault()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

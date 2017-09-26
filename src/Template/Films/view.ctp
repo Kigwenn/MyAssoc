@@ -1,3 +1,4 @@
+
 <?php
 /**
  * @var \App\View\AppView $this
@@ -63,7 +64,7 @@
                 <div class="col-md-4">
                     <?php if (!empty($film->actors)): ?>
                         <?php foreach ($film->actors as $actors): ?>
-                            <h4><strong><?= h($actors->name) ?></strong></h4>
+                            <h4><strong><?= $film->has('actor') ? $this->Html->link($film->actor->name, ['controller' => 'Actors', 'action' => 'view', $film->actor->id]) : '' ?></strong></h4>
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </div>
