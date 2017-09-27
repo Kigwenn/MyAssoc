@@ -16,9 +16,7 @@ class ActorsControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'app.actors',
-        'app.films',
-        'app.films_actors'
+        'app.actors'
     ];
 
     /**

@@ -36,7 +36,7 @@ class ActorsController extends AppController
     public function view($id = null)
     {
         $actor = $this->Actors->get($id, [
-            'contain' => ['Films']
+            'contain' => []
         ]);
 
         $this->set('actor', $actor);
@@ -60,8 +60,7 @@ class ActorsController extends AppController
             }
             $this->Flash->error(__('The actor could not be saved. Please, try again.'));
         }
-        $films = $this->Actors->Films->find('list', ['limit' => 200]);
-        $this->set(compact('actor', 'films'));
+        $this->set(compact('actor'));
         $this->set('_serialize', ['actor']);
     }
 
@@ -75,7 +74,7 @@ class ActorsController extends AppController
     public function edit($id = null)
     {
         $actor = $this->Actors->get($id, [
-            'contain' => ['Films']
+            'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $actor = $this->Actors->patchEntity($actor, $this->request->getData());
@@ -86,8 +85,7 @@ class ActorsController extends AppController
             }
             $this->Flash->error(__('The actor could not be saved. Please, try again.'));
         }
-        $films = $this->Actors->Films->find('list', ['limit' => 200]);
-        $this->set(compact('actor', 'films'));
+        $this->set(compact('actor'));
         $this->set('_serialize', ['actor']);
     }
 
