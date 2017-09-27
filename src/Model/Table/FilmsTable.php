@@ -9,7 +9,7 @@ use Cake\Validation\Validator;
 /**
  * Films Model
  *
- * @property \App\Model\Table\ActorsTable|\Cake\ORM\Association\BelongsToMany $Actors
+ * @property \App\Model\Table\ActorsTable|\Cake\ORM\Association\BelongsTo $Actors
  *
  * @method \App\Model\Entity\Film get($primaryKey, $options = [])
  * @method \App\Model\Entity\Film newEntity($data = null, array $options = [])
@@ -40,10 +40,8 @@ class FilmsTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsToMany('Actors', [
-            'foreignKey' => 'film_id',
-            'targetForeignKey' => 'actor_id',
-            'joinTable' => 'films_actors'
+        $this->belongsTo('Actors', [
+            'foreignKey' => 'actors_id'
         ]);
     }
 
@@ -68,5 +66,20 @@ class FilmsTable extends Table
             ->allowEmpty('content');
 
         return $validator;
+    }
+
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules)
+    {
+        $rules->add($rules->existsIn(['actors_id'], 'Actors'));
+
+        return $rules;
     }
 }

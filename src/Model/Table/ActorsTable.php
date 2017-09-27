@@ -9,8 +9,6 @@ use Cake\Validation\Validator;
 /**
  * Actors Model
  *
- * @property \App\Model\Table\FilmsTable|\Cake\ORM\Association\BelongsToMany $Films
- *
  * @method \App\Model\Entity\Actor get($primaryKey, $options = [])
  * @method \App\Model\Entity\Actor newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\Actor[] newEntities(array $data, array $options = [])
@@ -39,12 +37,6 @@ class ActorsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
-
-        $this->belongsToMany('Films', [
-            'foreignKey' => 'actor_id',
-            'targetForeignKey' => 'film_id',
-            'joinTable' => 'films_actors'
-        ]);
     }
 
     /**

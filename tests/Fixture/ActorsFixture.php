@@ -41,8 +41,8 @@ class ActorsFixture extends TestFixture
         [
             'id' => 1,
             'name' => 'Lorem ipsum dolor sit amet',
-            'created' => '2017-09-23 18:44:46',
-            'modified' => '2017-09-23 18:44:46'
+            'created' => '2017-09-27 10:30:04',
+            'modified' => '2017-09-27 10:30:04'
         ],
     ];
 }

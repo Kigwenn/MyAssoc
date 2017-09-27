@@ -7,8 +7,6 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('List Actors'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Films'), ['controller' => 'Films', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Film'), ['controller' => 'Films', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="actors form large-9 medium-8 columns content">
@@ -17,7 +15,6 @@
         <legend><?= __('Add Actor') ?></legend>
         <?php
             echo $this->Form->control('name');
-            echo $this->Form->control('films._ids', ['options' => $films]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

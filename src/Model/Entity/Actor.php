@@ -10,8 +10,6 @@ use Cake\ORM\Entity;
  * @property string $name
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
- *
- * @property \App\Model\Entity\Film[] $films
  */
 class Actor extends Entity
 {
@@ -28,7 +26,6 @@ class Actor extends Entity
     protected $_accessible = [
         'name' => true,
         'created' => true,
-        'modified' => true,
-        'films' => true
+        'modified' => true
     ];
 }
