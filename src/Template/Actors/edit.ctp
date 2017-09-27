@@ -6,7 +6,7 @@
 
 <section class="content-header">
     <h1>
-        <?php echo __('Modifier un acteur'); ?>
+        <?php echo __('Acteur'); ?>
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -22,20 +22,18 @@
             <div class="box box-solid">
                 <div class="box-header with-border">
                     <i class="fa fa-info"></i>
-                    <h3 class="box-title"><?php echo __('Détail de l\'acteur'); ?></h3>
+                    <h3 class="box-title"><?php echo __('Modification de l\'acteur'); ?></h3>
                 </div>
                 <!-- /.box-header -->
-                <div class="box-body">
-                    <dl class="dl-horizontal">
-                        <?= $this->Form->create($actor) ?>
-                        <dd><h3><strong><?= $this->Form->input('name',['label' =>'Nom de l\'acteur']) ?></strong></h3></dd>
-                    </dl>
+                <div>
+                    <div class="box-body">
+                        <dl class="dl-horizontal">
+                            <dd><h3><strong><?= h($actor->name) ?></strong></h3></dd>
+                        </dl>
+                    </div>
                 </div>
             </div>
-            <?= $this->Form->button(__('Enregistrer')) ?>
-            <?= $this->Form->end() ?>
         </div>
-
         <div class="col-md-4">
             <div class="row">
                 <div class="col-md-2">
@@ -57,4 +55,18 @@
             </div>
         </div>
     </div>
-</section>>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                <?php
+                    echo $this->Form->create($actor);
+                    echo $this->Form->input('name',['label' =>'Modifier en :']);
+                ?>
+                </div>
+            </div>
+        <?= $this->Form->button(__('Modifier')) ?>
+        <?= $this->Form->end() ?>
+        </div>
+    </div>
+</section>

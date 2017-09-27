@@ -62,8 +62,10 @@
                     <h4><?= __('Acteur principal:') ?></h4>
                 </div>
                 <div class="col-md-4">
-                    <?php if (!empty($film->actors)): ?>
-                        <?php foreach ($film->actors as $actors): ?>
+                    <?php if (!empty($film->actors_id)): ?>
+                        <?php foreach ($film->actors_id as $actors_id): ?>
+
+                            <?php debug($actors)?>
                             <h4><strong><?= $film->has('actor') ? $this->Html->link($film->actor->name, ['controller' => 'Actors', 'action' => 'view', $film->actor->id]) : '' ?></strong></h4>
                         <?php endforeach; ?>
                     <?php endif; ?>
