@@ -19,6 +19,7 @@
         <li><?= $this->Html->link(__('New Film'), ['controller' => 'Films', 'action' => 'add']) ?></li>
     </ul>
 </nav>
+
 <div class="favoris form large-9 medium-8 columns content">
     <?= $this->Form->create($favori) ?>
     <fieldset>
