@@ -28,9 +28,9 @@
                 <div class="box-body">
                     <?= $this->Form->create($film) ?>
                     <?php
-                    echo $this->Form->input('name');
-                    echo $this->Form->input('content');
-                    echo $this->Form->input('actors_id', ['options' => $actors, 'empty' => true]);
+                    echo $this->Form->input('name',['label' =>'Nom du film:']);
+                    echo $this->Form->input('content',['label' =>'Description:']);
+                    echo $this->Form->input('actors_id',['label' =>'Acteur principal:','options' => $actors, 'empty' => true]);
                     ?>
                 </div>
             </div>

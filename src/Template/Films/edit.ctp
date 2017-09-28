@@ -30,8 +30,8 @@
                     <?= $this->Form->create($film) ?>
                     <?php
                     echo $this->Form->input('name',['label' =>'Titre du film']);
-                    echo $this->Form->input('content',['label' =>'Déscription']);
-                    echo $this->Form->input('actors_id', ['label' =>'Sélection de l\'acteur','options' => $actors, 'empty' => true]);
+                    echo $this->Form->input('content',['label' =>'Description']);
+                    echo $this->Form->input('actors_id', ['label' =>'Acteur principal','options' => $actors, 'empty' => true]);
                     ?>
                 </div>
             </div>
