@@ -61,7 +61,7 @@
                 <div class="box-header with-border">
                 <?php
                     echo $this->Form->create($actor);
-                    echo $this->Form->input('name',['label' =>'Modifier en :']);
+                    echo $this->Form->input('name',['label' =>'Modifier le nom de l\'acteur:']);
                 ?>
                 </div>
             </div>
