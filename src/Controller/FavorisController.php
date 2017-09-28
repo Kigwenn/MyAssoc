@@ -20,9 +20,8 @@ class FavorisController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Users', 'Films']
-        ];
+        $this->paginate = [ 'contain' => ['Users', 'Films'] ];
+
         $favoris = $this->paginate($this->Favoris);
 
         $this->set(compact('favoris'));
@@ -38,9 +37,7 @@ class FavorisController extends AppController
      */
     public function view($id = null)
     {
-        $favori = $this->Favoris->get($id, [
-            'contain' => ['Users', 'Films']
-        ]);
+        $favori = $this->Favoris->get($id, [ 'contain' => ['Users', 'Films'] ]);
 
         $this->set('favori', $favori);
         $this->set('_serialize', ['favori']);
